@@ -31,14 +31,9 @@ To run this project locally, follow these steps:
   1.	Clone the Repository: git clone https://github.com/abriljordan/test-case-management-system.git
   2.	Navigate to the Project Directory: cd test-case-management-system
   3.	Open the index.html file in your web browser. You can simply double-click the file or open it with any text editor.
+
 	4.	Ensure you have the test-cases.json file in the same directory as index.html for data to load correctly.
 
-File Structure
-/test-case-management-system
-├── index.html
-├── app.js
-├── styles.css
-└── test-cases.json
 
 Contribution
 
