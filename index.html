@@ -3,37 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sauce Demo Test Cases</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Test Case Management</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Sauce Demo Test Management System</h1>
+    <h1>Test Case Management for Sauce Demo website</h1>
 
-    <!-- Search Bar -->
-    <input type="text" id="search" placeholder="Search by title, description, or steps..." oninput="filterTests()">
+    <!-- Search functionality -->
+    <input type="text" id="searchInput" placeholder="Search Test Cases">
+    <button onclick="searchTestCases()">Search</button>
 
-    <!-- Category Filter -->
-    <select id="categoryFilter" onchange="filterTests()">
-        <option value="All">All Categories</option>
-        <option value="Authentication">Authentication</option>
-        <option value="UI">UI</option>
-        <option value="Functionality">Functionality</option>
-        <option value="Performance">Performance</option>
+    <!-- Filter functionality -->
+    <label for="filterStatus">Filter by Execution Status:</label>
+    <select id="filterStatus" onchange="filterTestCases()">
+        <option value="All">All</option>
+        <option value="Passed">Passed</option>
+        <option value="Failed">Failed</option>
+        <option value="Passed with issues">Passed with issues</option>
     </select>
 
-    <!-- Status Filter -->
-    <select id="statusFilter" onchange="filterTests()">
-        <option value="All">All Statuses</option>
-        <option value="Not Started">Not Started</option>
-        <option value="In Progress">In Progress</option>
-        <option value="Completed">Completed</option>
-    </select>
-
-    <!-- Export Button -->
-    <button id="exportButton" onclick="exportTestCases()">Export Test Cases</button>
-
-    <!-- Test Cases Table -->
-    <table id="test-case-table">
+    <!-- Table to display test cases -->
+    <table border="1">
         <thead>
             <tr>
                 <th>Test Case ID</th>
@@ -48,8 +38,8 @@
                 <th>Notes</th>
             </tr>
         </thead>
-        <tbody>
-            <!-- Test case rows will be inserted here by JavaScript -->
+        <tbody id="testCaseTableBody">
+            <!-- Test cases will be dynamically inserted here -->
         </tbody>
     </table>
 

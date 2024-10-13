@@ -1,55 +1,81 @@
-document.addEventListener("DOMContentLoaded", function () {
-    // Fetch test cases from the JSON file
-    fetch('test-cases.json')
-        .then(response => response.json())
-        .then(data => {
-            // Call function to display test cases
-            displayTestCases(data);
-        })
-        .catch(error => {
-            console.error('Error loading test cases:', error);
-            alert('Failed to load test cases.');
-        });
-});
+// Load test cases from JSON file
+let testCases = [];
 
+fetch('test-cases.json')
+    .then(response => response.json())
+    .then(data => {
+        testCases = data;
+        displayTestCases(testCases);
+    })
+    .catch(error => console.error('Error loading test cases:', error));
+
+// Function to display test cases in a table
+// Function to display test cases in a table
 function displayTestCases(testCases) {
-    const tableBody = document.querySelector('#test-case-table tbody');
-    
-    // Clear previous table rows
+    const tableBody = document.getElementById('testCaseTableBody');
     tableBody.innerHTML = '';
 
     testCases.forEach(testCase => {
         const row = document.createElement('tr');
+
+        // Format the input data to be more readable
+        const formattedInputData = formatInputData(testCase.inputData);
+
         row.innerHTML = `
             <td>${testCase.id}</td>
-            <td>${formatSteps(testCase.testSteps)}</td>
-            <td>${formatInputData(testCase.inputData)}</td>
+            <td>${testCase.testSteps.join('<br>')}</td>
+            <td>${formattedInputData}</td>
             <td>${testCase.expectedResults}</td>
             <td>${testCase.actualResults}</td>
             <td>${testCase.testEnvironment}</td>
-            <td class="${getStatusClass(testCase.executionStatus)}">${testCase.executionStatus}</td>
-            <td class="${getSeverityClass(testCase.bugSeverity)}">${testCase.bugSeverity}</td>
+            <td>${testCase.executionStatus}</td>
+            <td>${testCase.bugSeverity}</td>
             <td>${testCase.bugPriority}</td>
             <td>${testCase.notes}</td>
         `;
+
         tableBody.appendChild(row);
     });
 }
 
-function formatSteps(steps) {
-    return `<ul>${steps.map(step => `<li>${step}</li>`).join('')}</ul>`;
-}
-
+// Helper function to format JSON data for display
 function formatInputData(inputData) {
-    return `Username: ${inputData.username}, Password: ${inputData.password}`;
+    let formattedData = '';
+    for (const key in inputData) {
+        if (typeof inputData[key] === 'object') {
+            // If the value is an object, loop through its properties
+            formattedData += `<b>${key}:</b><br>`;
+            for (const subKey in inputData[key]) {
+                formattedData += `&nbsp;&nbsp;&nbsp;${subKey}: ${inputData[key][subKey]}<br>`;
+            }
+        } else {
+            formattedData += `<b>${key}:</b> ${inputData[key]}<br>`;
+        }
+    }
+    return formattedData;
 }
 
-function getStatusClass(status) {
-    return status === 'Passed' ? 'status-passed' : 'status-failed';
+// Search function
+function searchTestCases() {
+    const searchInput = document.getElementById('searchInput').value.toLowerCase();
+    const filteredTestCases = testCases.filter(testCase => {
+        return testCase.id.toLowerCase().includes(searchInput) ||
+               testCase.testSteps.some(step => step.toLowerCase().includes(searchInput)) ||
+               testCase.inputData.username?.toLowerCase().includes(searchInput) ||
+               testCase.inputData.password?.toLowerCase().includes(searchInput) ||
+               testCase.inputData.checkoutInfo?.firstName?.toLowerCase().includes(searchInput) ||
+               testCase.inputData.checkoutInfo?.lastName?.toLowerCase().includes(searchInput);
+    });
+
+    displayTestCases(filteredTestCases);
 }
 
-function getSeverityClass(severity) {
-    if (severity === 'High') return 'severity-high';
-    if (severity === 'Medium') return 'severity-medium';
-    return 'severity-low';
+// Filter function
+function filterTestCases() {
+    const filterStatus = document.getElementById('filterStatus').value;
+    const filteredTestCases = filterStatus === 'All'
+        ? testCases
+        : testCases.filter(testCase => testCase.executionStatus === filterStatus);
+
+    displayTestCases(filteredTestCases);
 }
