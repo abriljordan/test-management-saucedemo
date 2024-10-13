@@ -7,15 +7,21 @@ This Test Case Management System is a simple web application designed to manage 
 Features
 
   •	Dynamic Data Loading: Fetches test case data from a JSON file (test-cases.json) to populate the table.
+
   •	Search Functionality: Users can search for test cases by ID, test steps, input data, expected results, and other fields.
+  
   •	Filter Options: Users can filter test cases by execution status (e.g., Passed, Failed, Blocked).
+  
   •	Responsive Design: The application is designed to be user-friendly and accessible on various devices.
+  
   •	Clear Presentation: Test case data is displayed in a structured table format for easy reading.
 
 Technologies Used
 
   •	HTML
+
   •	CSS
+  
   •	JavaScript
 
 Getting Started
