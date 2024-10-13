@@ -7,23 +7,22 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Test Case Management for Sauce Demo website</h1>
 
-    <!-- Search functionality -->
-    <input type="text" id="searchInput" placeholder="Search Test Cases">
-    <button onclick="searchTestCases()">Search</button>
+    <h1>Sauce Demo website - Test Case Management</h1>
 
-    <!-- Filter functionality -->
-    <label for="filterStatus">Filter by Execution Status:</label>
-    <select id="filterStatus" onchange="filterTestCases()">
+    <!-- Search Input -->
+    <input type="text" id="searchInput" placeholder="Search test cases...">
+
+    <!-- Filter Dropdown -->
+    <select id="statusFilter">
         <option value="All">All</option>
         <option value="Passed">Passed</option>
         <option value="Failed">Failed</option>
-        <option value="Passed with issues">Passed with issues</option>
+        <option value="Blocked">Blocked</option>
     </select>
 
     <!-- Table to display test cases -->
-    <table border="1">
+    <table>
         <thead>
             <tr>
                 <th>Test Case ID</th>
@@ -39,7 +38,7 @@
             </tr>
         </thead>
         <tbody id="testCaseTableBody">
-            <!-- Test cases will be dynamically inserted here -->
+            <!-- Test cases will be dynamically populated here -->
         </tbody>
     </table>
 
