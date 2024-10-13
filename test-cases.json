@@ -1,0 +1,219 @@
+[
+    {
+        "id": "TC-001",
+        "testSteps": [
+            "Open the Sauce Demo website",
+            "Enter valid username 'standard_user'",
+            "Enter valid password 'secret_sauce'",
+            "Click the login button",
+            "Verify that the user is redirected to the products page"
+        ],
+        "inputData": {
+            "username": "standard_user",
+            "password": "secret_sauce"
+        },
+        "expectedResults": "User is redirected to the products page.",
+        "actualResults": "User successfully redirected to the products page.",
+        "testEnvironment": "Chrome v92, Windows 10",
+        "executionStatus": "Passed",
+        "bugSeverity": "N/A",
+        "bugPriority": "N/A",
+        "notes": "Test completed successfully without any issues."
+    },
+    {
+        "id": "TC-002",
+        "testSteps": [
+            "Open the Sauce Demo website",
+            "Enter valid username 'standard_user'",
+            "Enter invalid password 'wrong_password'",
+            "Click the login button",
+            "Verify that an error message is displayed"
+        ],
+        "inputData": {
+            "username": "standard_user",
+            "password": "wrong_password"
+        },
+        "expectedResults": "An error message is displayed indicating incorrect credentials.",
+        "actualResults": "Error message displayed: 'Username and password do not match any user in this service.'",
+        "testEnvironment": "Chrome v92, Windows 10",
+        "executionStatus": "Failed",
+        "bugSeverity": "Minor",
+        "bugPriority": "Medium",
+        "notes": "Login functionality behaves as expected with invalid password."
+    },
+    {
+        "id": "TC-003",
+        "testSteps": [
+            "Open the Sauce Demo website",
+            "Enter valid username 'locked_out_user'",
+            "Enter valid password 'secret_sauce'",
+            "Click the login button",
+            "Verify that a locked out error message is displayed"
+        ],
+        "inputData": {
+            "username": "locked_out_user",
+            "password": "secret_sauce"
+        },
+        "expectedResults": "An error message is displayed indicating the user is locked out.",
+        "actualResults": "Error message displayed: 'Sorry, this user has been locked out.'",
+        "testEnvironment": "Chrome v92, Windows 10",
+        "executionStatus": "Failed",
+        "bugSeverity": "Major",
+        "bugPriority": "High",
+        "notes": "Account lockout works as expected."
+    },
+    {
+        "id": "TC-004",
+        "testSteps": [
+            "Open the Sauce Demo website",
+            "Enter valid username 'problem_user'",
+            "Enter valid password 'secret_sauce'",
+            "Click the login button",
+            "Verify that the products page has display issues"
+        ],
+        "inputData": {
+            "username": "problem_user",
+            "password": "secret_sauce"
+        },
+        "expectedResults": "Products page is displayed with issues.",
+        "actualResults": "Products page has display issues (broken images, misaligned elements).",
+        "testEnvironment": "Chrome v92, Windows 10",
+        "executionStatus": "Failed",
+        "bugSeverity": "High",
+        "bugPriority": "High",
+        "notes": "UI issues for problem user."
+    },
+    {
+        "id": "TC-005",
+        "testSteps": [
+            "Open the Sauce Demo website",
+            "Enter valid username 'performance_glitch_user'",
+            "Enter valid password 'secret_sauce'",
+            "Click the login button",
+            "Verify that login is delayed"
+        ],
+        "inputData": {
+            "username": "performance_glitch_user",
+            "password": "secret_sauce"
+        },
+        "expectedResults": "Login is delayed but eventually successful.",
+        "actualResults": "Login took significantly longer than expected.",
+        "testEnvironment": "Chrome v92, Windows 10",
+        "executionStatus": "Passed with issues",
+        "bugSeverity": "Medium",
+        "bugPriority": "Medium",
+        "notes": "Performance glitch observed during login."
+    },
+    {
+        "id": "TC-006",
+        "testSteps": [
+            "Open the Sauce Demo website",
+            "Click on the filter drop-down",
+            "Select 'Price (low to high)'",
+            "Verify that products are sorted by price in ascending order"
+        ],
+        "inputData": {},
+        "expectedResults": "Products are sorted from lowest to highest price.",
+        "actualResults": "Products correctly sorted by price (low to high).",
+        "testEnvironment": "Chrome v92, Windows 10",
+        "executionStatus": "Passed",
+        "bugSeverity": "N/A",
+        "bugPriority": "N/A",
+        "notes": "Sorting functionality works as expected."
+    },
+    {
+        "id": "TC-007",
+        "testSteps": [
+            "Open the Sauce Demo website",
+            "Log in as 'standard_user'",
+            "Add a product to the cart",
+            "Verify that the cart icon shows the correct number of items"
+        ],
+        "inputData": {
+            "username": "standard_user",
+            "password": "secret_sauce"
+        },
+        "expectedResults": "Cart icon shows the number of items correctly.",
+        "actualResults": "Cart icon shows '1' item in the cart after adding.",
+        "testEnvironment": "Chrome v92, Windows 10",
+        "executionStatus": "Passed",
+        "bugSeverity": "N/A",
+        "bugPriority": "N/A",
+        "notes": "Cart functionality works as expected."
+    },
+    {
+        "id": "TC-008",
+        "testSteps": [
+            "Open the Sauce Demo website",
+            "Log in as 'standard_user'",
+            "Add multiple products to the cart",
+            "Remove one product from the cart",
+            "Verify that the cart updates correctly"
+        ],
+        "inputData": {
+            "username": "standard_user",
+            "password": "secret_sauce"
+        },
+        "expectedResults": "Cart updates correctly after removing an item.",
+        "actualResults": "Cart updated correctly after removing one product.",
+        "testEnvironment": "Chrome v92, Windows 10",
+        "executionStatus": "Passed",
+        "bugSeverity": "N/A",
+        "bugPriority": "N/A",
+        "notes": "Removing items from the cart works as expected."
+    },
+    {
+        "id": "TC-009",
+        "testSteps": [
+            "Open the Sauce Demo website",
+            "Log in as 'standard_user'",
+            "Add a product to the cart",
+            "Proceed to the checkout page",
+            "Enter valid checkout information",
+            "Verify that the order is successfully placed"
+        ],
+        "inputData": {
+            "username": "standard_user",
+            "password": "secret_sauce",
+            "checkoutInfo": {
+                "firstName": "John",
+                "lastName": "Doe",
+                "postalCode": "12345"
+            }
+        },
+        "expectedResults": "Order is placed successfully and confirmation page is displayed.",
+        "actualResults": "Order placed and confirmation page displayed as expected.",
+        "testEnvironment": "Chrome v92, Windows 10",
+        "executionStatus": "Passed",
+        "bugSeverity": "N/A",
+        "bugPriority": "N/A",
+        "notes": "Checkout process works as expected."
+    },
+    {
+        "id": "TC-010",
+        "testSteps": [
+            "Open the Sauce Demo website",
+            "Log in as 'standard_user'",
+            "Add a product to the cart",
+            "Proceed to the checkout page",
+            "Enter incomplete checkout information (e.g. missing postal code)",
+            "Verify that an error message is displayed"
+        ],
+        "inputData": {
+            "username": "standard_user",
+            "password": "secret_sauce",
+            "checkoutInfo": {
+                "firstName": "John",
+                "lastName": "Doe",
+                "postalCode": ""
+            }
+        },
+        "expectedResults": "Error message is displayed indicating missing information.",
+        "actualResults": "Error message displayed: 'Error: Postal Code is required.'",
+        "testEnvironment": "Chrome v92, Windows 10",
+        "executionStatus": "Failed",
+        "bugSeverity": "Minor",
+        "bugPriority": "Low",
+        "notes": "Validation for postal code works as expected."
+    }
+]

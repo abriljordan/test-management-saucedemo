@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sauce Demo Test Cases</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Sauce Demo Test Management System</h1>
+
+    <!-- Search Bar -->
+    <input type="text" id="search" placeholder="Search by title, description, or steps..." oninput="filterTests()">
+
+    <!-- Category Filter -->
+    <select id="categoryFilter" onchange="filterTests()">
+        <option value="All">All Categories</option>
+        <option value="Authentication">Authentication</option>
+        <option value="UI">UI</option>
+        <option value="Functionality">Functionality</option>
+        <option value="Performance">Performance</option>
+    </select>
+
+    <!-- Status Filter -->
+    <select id="statusFilter" onchange="filterTests()">
+        <option value="All">All Statuses</option>
+        <option value="Not Started">Not Started</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Completed">Completed</option>
+    </select>
+
+    <!-- Export Button -->
+    <button id="exportButton" onclick="exportTestCases()">Export Test Cases</button>
+
+    <!-- Test Cases Table -->
+    <table id="test-case-table">
+        <thead>
+            <tr>
+                <th>Test Case ID</th>
+                <th>Test Steps</th>
+                <th>Input Data</th>
+                <th>Expected Results</th>
+                <th>Actual Results</th>
+                <th>Test Environment</th>
+                <th>Execution Status</th>
+                <th>Bug Severity</th>
+                <th>Bug Priority</th>
+                <th>Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Test case rows will be inserted here by JavaScript -->
+        </tbody>
+    </table>
+
+    <script src="app.js"></script>
+</body>
+</html>
